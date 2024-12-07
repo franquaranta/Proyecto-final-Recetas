@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div>
+  <div class="categories">
+    <div class="category">
+      <a [routerLink]="'/desayunos'">
+        <img src="https://i.pinimg.com/736x/c0/c2/37/c0c2377738c2076452f134e507c1cafa.jpg" alt="Desayunos & Meriendas" />
+        <h2>Desayunos & Meriendas</h2>
+      </a>
+    </div>
+    <div class="category">
+      <a [routerLink]="'/almuerzos'">
+        <img src="https://i.pinimg.com/736x/f1/ba/ec/f1baec2d9a8c65b1e8fdc08d24e34798.jpg" alt="Almuerzo" />
+        <h2>Almuerzos</h2>
+      </a>
+    </div>
+    <div class="category">
+      <a [routerLink]="'/cenas'">
+        <img src="https://i.pinimg.com/736x/88/f1/89/88f189f71f0b474ba59fdb8d493f0027.jpg" alt="Cena" />
+        <h2>Cenas</h2>
+      </a>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<footer class="footer">
+  <div class="footer-left">
+    <p>&copy; 2024 JSF Recipes. Todos los derechos reservados.</p>
+  </div>
+  <div class="footer-right">
+    <p>Seguinos!</p>
+    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">Instagram</a>
+    <a href="tel:3416745788">3416745788</a>
+  </div>
+</footer>
+
+
+
