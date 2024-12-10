@@ -2,29 +2,12 @@
 <div class="favorites-container">
   <h1>Favoritos</h1>
   <div class="favorites-list">
-    <div class="favorite-item">
-      <button class="fav-btn">F</button>
-      <img src="" alt="Pasta al Pesto" />
-      <span>Pasta al Pesto</span>
-      <button class="delete-btn">🗑️</button>
-    </div>
-    <div class="favorite-item">
-      <button class="fav-btn">F</button>
-      <img src="" alt="Pita Pizza" />
-      <span>Pita Pizza</span>
-      <button class="delete-btn">🗑️</button>
-    </div>
-    <div class="favorite-item">
-      <button class="fav-btn">F</button>
-      <img src="" alt="Panqueques" />
-      <span>Panqueques</span>
-      <button class="delete-btn">🗑️</button>
-    </div>
-    <div class="favorite-item">
-      <button class="fav-btn">F</button>
-      <img src="" alt="Ensalada Cesar" />
-      <span>Ensalada Cesar</span>
-      <button class="delete-btn">🗑️</button>
-    </div>
+    @for( favorite of favorites; track favorite.id ){
+      <div class="favorite-item">
+        <img [src]="favorite.image" [alt]="favorite.title" />
+        <span>{{favorite.title}}</span>
+        <button (click)="removeFromFavorites(favorite)" class="delete-btn">🗑️</button>
+      </div>
+    }
   </div>
 </div>

@@ -1,30 +1,29 @@
 <app-header></app-header>
 <div class="container">
-  
+
     <section class="recetas">
-      <div class="receta">
-        <img src="" alt="Tortillas de Espinaca y Queso" />
-        <p>Tortillas de Espinaca y Queso</p>
-      </div>
-      <div class="receta">
-        <img src="" alt="Carrot cake" />
-        <p>Carrot cake</p>
-      </div>
-      <div class="receta">
-        <img src="" alt="Smoothie de Plátano y Espinacas" />
-        <p>Smoothie de Plátano y Espinacas</p>
-      </div>
-      <div class="receta">
-        <img src="" alt="Galletas de Avena y Pasas" />
-        <p>Galletas de Avena y Pasas</p>
-      </div>
-      <div class="receta">
-        <img src="" alt="Yogur con Granola y Frutas" />
-        <p>Yogur con Granola y Frutas</p>
-      </div>
-      <div class="receta">
-        <img src="" alt="Panqueques" />
-        <p>Panqueques</p>
-      </div>
+      @if( breakfast$ | async; as breakfasts ){
+        @for( breakfast of breakfasts; track breakfast.id){
+          <div class="receta" (click)="openModal(breakfast)">
+            <img [src]="breakfast.image" alt="">
+            <p>{{breakfast.title}}</p>
+            <button
+            (click)="toggleFavorite(breakfast); $event.stopPropagation()"
+            class="favorite-button"
+            [class.favorited]="isFavourite(breakfast.id)"
+            >
+            ♥
+          </button>
+          </div>
+        }
+      }
     </section>
   </div>
+
+
+  <app-modal-info
+  [isOpen]="isModalOpen"
+  [recipe]="breakfastSelected"
+  (close)="closeModal()"
+>
+</app-modal-info>

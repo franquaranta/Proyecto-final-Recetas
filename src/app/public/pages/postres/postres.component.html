@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="container">
+  <section class="recetas"> 
+    @if( desserts$ | async; as desserts ){ @for( dessert of desserts; track
+    dessert.id){
+    <div class="receta" (click)="openModal(dessert)">
+      <img [src]="dessert.image" alt="" />
+      <p>{{ dessert.title }}</p>
+      <button
+      (click)="toggleFavorite(dessert); $event.stopPropagation()" 
+      class="favorite-button" 
+      [class.favorited]="isFavourite(dessert.id)"
+      > 
+      ♥ 
+    </button>
+    </div>
+    } }
+  </section>
+</div>
+
+<app-modal-info
+  [isOpen]="isModalOpen"
+  [recipe]="dessertSelected"
+  (close)="closeModal()"
+>
+</app-modal-info>

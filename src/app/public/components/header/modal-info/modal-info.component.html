@@ -1,0 +1,18 @@
+@if(isOpen && recipe){
+
+    <div class="modal-overlay" (click)="closeModal()"> 
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-button" (click)="closeModal()">X</button>
+        <img [src]="recipe.image" alt="">
+    
+        <div>
+          @for( step of steps$ | async; track step.number){
+            <div class="step">
+              {{step.step}}
+            </div>
+          }
+        </div>
+    
+      </div>
+    </div>
+    }
