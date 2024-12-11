@@ -1,15 +1,15 @@
 @if(isOpen && recipe){
 
-    <div class="modal-overlay" (click)="closeModal()"> 
-      <div class="modal-content" (click)="$event.stopPropagation()">
-        <button class="close-button" (click)="closeModal()">X</button>
+    <div class="modal-overlay" (click)="closeModal()"> <!-- para cerrar el modal cuando tocamos el fondo -->
+      <div class="modal-content" (click)="$event.stopPropagation()"> <!-- el stop propagation hace q no se expanda -->
+        <button class="close-button" (click)="closeModal()">X</button> <!-- para cerrarlo con la cruz -->
         <img [src]="recipe.image" alt="">
     
         <div>
           @for( step of steps$ | async; track step.number){
-            <div class="step">
+            <li class="step">
               {{step.step}}
-            </div>
+            </li>
           }
         </div>
     

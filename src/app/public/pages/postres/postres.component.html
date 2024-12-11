@@ -1,16 +1,20 @@
 <app-header></app-header>
 <div class="container">
-  <section class="recetas"> 
-    @if( desserts$ | async; as desserts ){ @for( dessert of desserts; track
+  <section class="recetas">  <!--  //17 una vez que ya tengo los postres los tengo que recorrer, porque voy a tener todo un arreglo de postres. con la linea del async…lo que hago es validar si estan los postres (el async me actualiza la variable (el section lo voy a mostrar esten o no los postres disponibles), el as dessert es para poder usar la variable desserts$ sin el signo pesos (que es el observable) y despues lo que nos queda es recorrerlo con el for y el track que lo que hace es distinguir lo de desert.id  porque sino no me dejaria usar el for.
+    entonces, por cads postre que vas ejecutando, te lo va mostrando, con lo que esta abajo de image, title,
+      --> 
+    @if( desserts$ | async; as desserts ){ @for( dessert of desserts; track 
     dessert.id){
     <div class="receta" (click)="openModal(dessert)">
       <img [src]="dessert.image" alt="" />
       <p>{{ dessert.title }}</p>
+       <!-- el async espera los datos del observable y los asigna a la variable desserts. el @for con lo de adentro itera sobre cada receta en el arreglo desserts. El parametro de track... rastrea los elementos por su id.  -->
       <button
       (click)="toggleFavorite(dessert); $event.stopPropagation()" 
       class="favorite-button" 
-      [class.favorited]="isFavourite(dessert.id)"
-      > 
+      [class.favorited]="isFavourite(dessert.id)" 
+      >  <!-- cambiamos para explicar lo de true false -->
+       <!-- el click llama a togglefavorite que agrega o quita recetas de favoritos. usa lo de stopprop para evitar que el click se propague por todo el contenedor de la receta. lo de class lo pone en rojo si devuelve true.  -->
       ♥ 
     </button>
     </div>
@@ -21,6 +25,8 @@
 <app-modal-info
   [isOpen]="isModalOpen"
   [recipe]="dessertSelected"
-  (close)="closeModal()"
+  (close)="closeModal()" 
 >
+ <!-- [propiedad] valor - el isopen controla si el modal esta abierto, el recipe pasa la receta seleccionada al modal para mostrar su informacion, y el close escucha el evento emitido y ejecuta el metodo closemodal  -->
 </app-modal-info>
+

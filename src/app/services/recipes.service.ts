@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { enviroment } from '../../enviroment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { firstValueFrom, map, Observable } from 'rxjs';
-import { Recipe, RecipeInfo, RecipeStepsInfo, Step } from '../models/recipe';
+import { HttpClient, HttpHeaders } from '@angular/common/http'; //para realizar solicitudes http y configurar encabezados
+import { map, Observable } from 'rxjs'; //para trabajar con flujos de datos reactivos como los observables y operadores como map
+import { Recipe, RecipeInfo, RecipeStepsInfo } from '../models/recipe';
 import { RecipeAdapter } from '../models/adapter';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class RecipesService {
   constructor(private _http: HttpClient) {} //4httpclient es el modulo que usa angular para hacer consultas de tipo http recuest, lo que hacemos es extraer al constructor como un servicio (es un servicio que ya esta en angular) que lo declaras con una variable privada (_http)
 
   getRecipeType(type : string): Observable<Recipe[]> { //13.1 este seria el observable de recetas, que el observable es una propiedad de angular (la funcion de getrecipetype la tenemos en las 3 partes del trabajo)
-    const headers = new HttpHeaders({
+    const headers = new HttpHeaders({ //se crea un objeto httpheaders con clave x-api.key extraida de enviroment
       'x-api-key': enviroment.apiKey,
     });
     return this._http

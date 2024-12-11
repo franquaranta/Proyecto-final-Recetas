@@ -1,4 +1,4 @@
-import { Info } from "./api"
+import { Info } from "./api" //tipados de los objetos que usamos
 
 export interface Recipe{
   id: number,

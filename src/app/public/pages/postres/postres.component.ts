@@ -32,7 +32,7 @@ export class PostresComponent {
     this.isModalOpen = false;
   }
 
-  isFavourite(id: number): boolean {  //le paso el id de la receta y llamo dentro de favoriteservce a is favorite, (voy al servicio de favorites)
+  isFavourite(id: number): boolean {  //esto despues!! le paso el id de la receta y llamo dentro de favoriteservce a is favorite, (voy al servicio de favorites)
     return this._favoritesService.isFavorite(id); 
   }
 
